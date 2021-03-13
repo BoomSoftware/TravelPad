@@ -1,10 +1,10 @@
 # TravelPad
 
 <p>The idea is to create an application that can help to manage trip. A lot of people organize their trips on their own, 
-so they have a lot of information and documents. This kind of situation can provide some problems. A price is also very important thing during the trip. 
-There are a lot of diffrent costs such as transports, hotels and all the activities. 
+so they have a lot of information and documents. This kind of situation can cause some problems. A price is also very important thing during the trip. 
+There are a lot of diffrent costs such as transportation, hotels and all the activities. 
 Keeping all the prices in a one place and viewing the total price can help with financial aspect of a trip. </p>
-<p>The TravelPad application is going to prevent time wasting and uncomfortable feelings by storing all the most important information in a one place,
+<p>The TravelPad application is going to prevent from time wasting and uncomfortable feelings by storing all the most important information in a one place,
 it will also keep track of all the trip costs.</p>
 
 The initial trip structure will be divided into small parts in the application:
