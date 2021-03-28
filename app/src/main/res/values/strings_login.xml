@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email" translatable="false">EMAIL</string>
+    <string name="password">PASSWORD</string>
+    <string name="no_account">Do not have account yet?</string>
+    <string name="confirm_password">PASSWORD CONFIRMATION</string>
+</resources>

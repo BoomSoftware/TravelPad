@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sign_in">Zaloguj się</string>
+    <string name="sign_up">Utwórz konto</string>
+    <string name="back">Wróć</string>
+    <string name="password">HASŁO</string>
+    <string name="no_account">Nie utworzyłeś jeszcze konta?</string>
+    <string name="confirm_password">POTWIERDZENIE HASŁA</string>
+    <string name="main_nav_new_travel">Nowa podróż</string>
+    <string name="main_nav_travels">Podróże</string>
+    <string name="main_nav_options">Opcje</string>
+    <string name="main_nav_ideas">Pomysły</string>
+</resources>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.main.MainViewFragment">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/travelpad_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/text_main_app_title"
+        style="@style/header1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:text="@string/app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <View
+        android:id="@+id/border_top_subtitle"
+        style="@style/text_border"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="90dp"
+        android:background="@color/green_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_main_app_title" />
+
+    <TextView
+        android:id="@+id/text_main_app_subtitle"
+        style="@style/header2"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="90dp"
+        android:text="@string/app_sentence"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/border_top_subtitle" />
+
+    <View
+        android:id="@+id/border_bottom_subtitle"
+        style="@style/text_border"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="90dp"
+        android:background="@color/green_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_main_app_subtitle" />
+
+    <GridLayout
+        android:id="@+id/nav_grid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:columnCount="2"
+        android:useDefaultMargins="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/border_bottom_subtitle">
+
+        <Button
+            android:id="@+id/button_main_new_travel"
+            style="@style/selected_button"
+            android:drawableTop="@drawable/ic_general_add"
+            android:gravity="center"
+            android:layout_marginEnd="10dp"
+            android:text="@string/main_nav_new_travel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/border_bottom_subtitle" />
+
+        <Button
+            android:id="@+id/button_main_travel_list"
+            style="@style/main_button"
+            android:layout_marginStart="10dp"
+            android:drawableTop="@drawable/ic_general_travel"
+            android:text="@string/main_nav_travels"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/border_bottom_subtitle" />
+
+        <Button
+            android:id="@+id/button_main_travel_ideas"
+            style="@style/main_button"
+            android:layout_marginEnd="10dp"
+            android:drawableTop="@drawable/ic_general_idea"
+            android:text="@string/main_nav_ideas"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_main_new_travel" />
+
+        <Button
+            android:id="@+id/button_main_settings"
+            style="@style/main_button"
+            android:layout_marginStart="10dp"
+            android:drawableTop="@drawable/ic_general_settings"
+            android:text="@string/main_nav_options"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_main_travel_list" />
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
