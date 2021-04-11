@@ -16,4 +16,6 @@
     <color name="green_200">#65bf7a</color>
     <color name="green_400">#0DAB49</color>
     <color name="green_900">#035321</color>
+
+    <color name="green_200_transparency">#8065BF7A</color>
 </resources>

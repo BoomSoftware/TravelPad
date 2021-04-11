@@ -1,6 +1,14 @@
 package com.example.travelpad.models;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Transportation {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+    private int travelId;
+
     private int duration;
     private double price;
 
@@ -88,5 +96,21 @@ public class Transportation {
 
     public void setEndingMinute(int endingMinute) {
         this.endingMinute = endingMinute;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getTravelId() {
+        return travelId;
+    }
+
+    public void setTravelId(int travelId) {
+        this.travelId = travelId;
     }
 }

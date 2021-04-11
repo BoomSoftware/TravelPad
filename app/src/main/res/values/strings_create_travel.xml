@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="create_travel_title">Plan your travel</string>
+    <string name="create_travel_subtitle">Choose date, name and keep your travel organised</string>
+    <string name="create_travel_name">Travel name</string>
+    <string name="create_travel_start_date">Start date</string>
+    <string name="create_travel_end_date">End date</string>
+    <string name="create_travel_create_button">Create travel</string>
+</resources>

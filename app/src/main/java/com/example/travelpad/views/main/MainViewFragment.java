@@ -11,7 +11,6 @@ import com.example.travelpad.R;
 
 public class MainViewFragment extends Fragment {
 
-    private View view;
     private Button settingsButton;
     private Button newTravelButton;
     private Button travelsButton;
@@ -24,7 +23,7 @@ public class MainViewFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        view =  inflater.inflate(R.layout.fragment_main_view, container, false);
+        View view = inflater.inflate(R.layout.fragment_main_view, container, false);
         prepareUI(view);
         prepareOnClickEvents(view);
         return view;

@@ -10,4 +10,10 @@
     <string name="main_nav_travels">Podróże</string>
     <string name="main_nav_options">Opcje</string>
     <string name="main_nav_ideas">Pomysły</string>
+    <string name="create_travel_title">Zaplanuj swoją podróż</string>
+    <string name="create_travel_subtitle">Wybierz datę, nazwij i zorganizuj swoją podróż</string>
+    <string name="create_travel_name">Nazwa podróży</string>
+    <string name="create_travel_start_date">Data rozpoczęcia</string>
+    <string name="create_travel_end_date">Data zakończenia</string>
+    <string name="create_travel_create_button">Stwórz podróż</string>
 </resources>

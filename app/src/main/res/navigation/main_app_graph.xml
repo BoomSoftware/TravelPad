@@ -8,8 +8,7 @@
     <fragment
         android:id="@+id/mainViewFragment"
         android:name="com.example.travelpad.views.main.MainViewFragment"
-        android:label="fragment_main_view"
-        tools:layout="@layout/fragment_main_view" >
+        tools:layout="@layout/fragment_main_view">
         <action
             android:id="@+id/action_goToNewTravel"
             app:destination="@id/newTravelFragment" />
@@ -26,21 +25,17 @@
     <fragment
         android:id="@+id/newTravelFragment"
         android:name="com.example.travelpad.views.main.NewTravelFragment"
-        android:label="fragment_new_travel"
         tools:layout="@layout/fragment_new_travel" />
     <fragment
         android:id="@+id/settingsFragment2"
         android:name="com.example.travelpad.views.main.SettingsFragment"
-        android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/ideasFragment"
         android:name="com.example.travelpad.views.main.IdeasFragment"
-        android:label="fragment_ideas"
         tools:layout="@layout/fragment_ideas" />
     <fragment
         android:id="@+id/travelsFragment"
         android:name="com.example.travelpad.views.main.TravelsFragment"
-        android:label="fragment_travels"
         tools:layout="@layout/fragment_travels" />
 </navigation>

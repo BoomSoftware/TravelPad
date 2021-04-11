@@ -56,11 +56,11 @@ public class SignInFragment extends Fragment {
         goToSignUpTextView.setOnClickListener(v-> Navigation.findNavController(view).navigate(R.id.goToSignUp));
         confirmSignInButton.setOnClickListener(v ->{
             boolean result = viewModel.signIn(emailEditText.getText().toString(), passwordEditText.getText().toString());
-            if(result){
+//            if(result){
                 Intent intent = new Intent(view.getContext(), HomeAppActivity.class);
                 view.getContext().startActivity(intent);
-            }
-            Toast.makeText(getContext(), "WRONG DATA", Toast.LENGTH_SHORT).show();
+//            }
+//            Toast.makeText(getContext(), "WRONG DATA", Toast.LENGTH_SHORT).show();
         });
     }
 }

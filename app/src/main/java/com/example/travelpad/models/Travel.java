@@ -1,28 +1,20 @@
 package com.example.travelpad.models;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity
 public class Travel {
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
-    private ArrayList<Item> virtualTravelBag;
-    private ArrayList<Hotel> hotels;
+    private String startDate;
+    private String endDate;
 
-    private LocalDate startDate;
-    private LocalDate endDate;
-
-    private ArrayList<Transportation> destinationRoadTransports;
-    private ArrayList<Transportation> wayBackTransports;
-
-    public Travel(String name, LocalDate startDate, LocalDate endDate) {
+    public Travel(String name, String startDate, String endDate) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.destinationRoadTransports = new ArrayList<>();
-        this.wayBackTransports = new ArrayList<>();
-        this.hotels = new ArrayList<>();
-        this.virtualTravelBag = new ArrayList<>();
     }
 
     public String getName() {
@@ -33,43 +25,27 @@ public class Travel {
         this.name = name;
     }
 
-    public ArrayList<Item> getVirtualTravelBag() {
-        return virtualTravelBag;
-    }
-
-    public void setVirtualTravelBag(ArrayList<Item> virtualTravelBag) {
-        this.virtualTravelBag = virtualTravelBag;
-    }
-
-    public ArrayList<Hotel> getHotels() {
-        return hotels;
-    }
-
-    public void setHotels(ArrayList<Hotel> hotels) {
-        this.hotels = hotels;
-    }
-
-    public ArrayList<Transportation> getDestinationRoadTransports() {
-        return destinationRoadTransports;
-    }
-
-    public void setDestinationRoadTransports(ArrayList<Transportation> destinationRoadTransports) {
-        this.destinationRoadTransports = destinationRoadTransports;
-    }
-
-    public ArrayList<Transportation> getWayBackTransports() {
-        return wayBackTransports;
-    }
-
-    public void setWayBackTransports(ArrayList<Transportation> wayBackTransports) {
-        this.wayBackTransports = wayBackTransports;
-    }
-
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 }

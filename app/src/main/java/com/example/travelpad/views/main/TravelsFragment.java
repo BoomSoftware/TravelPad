@@ -3,64 +3,47 @@ package com.example.travelpad.views.main;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.travelpad.R;
+import com.example.travelpad.adapters.TravelAdapter;
+import com.example.travelpad.models.Travel;
+import com.example.travelpad.viewmodels.TravelListViewModel;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TravelsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class TravelsFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private TravelListViewModel viewModel;
+    private TravelAdapter adapter;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public TravelsFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TravelsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TravelsFragment newInstance(String param1, String param2) {
-        TravelsFragment fragment = new TravelsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private RecyclerView travelList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_travels, container, false);
+        View view = inflater.inflate(R.layout.fragment_travels, container, false);
+        viewModel = new ViewModelProvider(this).get(TravelListViewModel.class);
+        prepareUI(view);
+        return view;
+    }
+
+    private void prepareUI(View view){
+        travelList = view.findViewById(R.id.recycler_travel_list_travels);
+        travelList.hasFixedSize();
+        travelList.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
+        adapter = new TravelAdapter();
+        travelList.setAdapter(adapter);
+
+        viewModel.getTravels().observe(getViewLifecycleOwner(), travels -> {
+            adapter.setTravels(travels);
+        });
+
     }
 }
