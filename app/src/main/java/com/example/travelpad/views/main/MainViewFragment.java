@@ -30,10 +30,10 @@ public class MainViewFragment extends Fragment {
     }
 
     private void prepareUI(View view) {
-       settingsButton = view.findViewById(R.id.button_main_settings);
-       newTravelButton = view.findViewById(R.id.button_main_new_travel);
-       travelsButton = view.findViewById(R.id.button_main_travel_list);
-       ideasButton = view.findViewById(R.id.button_main_travel_ideas);
+       settingsButton = view.findViewById(R.id.button_travel_transports_from);
+       newTravelButton = view.findViewById(R.id.button_travel_virtual_bag);
+       travelsButton = view.findViewById(R.id.button_travel_hotels);
+       ideasButton = view.findViewById(R.id.button_travel_transports_to);
     }
 
     private void prepareOnClickEvents(View view) {

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/travel_graph"
+    app:startDestination="@id/travelMainPage">
+
+    <fragment
+        android:id="@+id/travelMainPage"
+        android:name="com.example.travelpad.views.travel.TravelMainPage"
+        android:label=""
+        tools:layout="@layout/fragment_travel_main_page" >
+        <action
+            android:id="@+id/action_goToVirtualBag"
+            app:destination="@id/virtualBagFragment" />
+        <action
+            android:id="@+id/action_goToTransportation"
+            app:destination="@id/travelTransportationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/virtualBagFragment"
+        android:name="com.example.travelpad.views.travel.VirtualBagFragment"
+        android:label=""
+        tools:layout="@layout/fragment_virtual_bag" />
+    <fragment
+        android:id="@+id/travelTransportationFragment"
+        android:name="com.example.travelpad.views.travel.TransportationFragment"
+        android:label=""
+        tools:layout="@layout/fragment_travel_transportation" >
+        <action
+            android:id="@+id/action_goToAddTransportation"
+            app:destination="@id/addTransportationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTransportationFragment"
+        android:name="com.example.travelpad.views.travel.AddTransportationFragment"
+        android:label=""
+        tools:layout="@layout/fragment_add_transportation" />
+</navigation>

@@ -10,10 +10,12 @@ import com.example.travelpad.models.Item;
 import com.example.travelpad.models.Transportation;
 import com.example.travelpad.models.Travel;
 
-@Database(entities = {Travel.class, Transportation.class, Item.class, Hotel.class}, version = 2)
+@Database(entities = {Travel.class, Transportation.class, Item.class, Hotel.class}, version = 7)
 public abstract class TravelDatabase extends RoomDatabase {
     private static TravelDatabase instance;
     public abstract TravelDAO travelDAO();
+    public abstract ItemDAO itemDAO();
+    public abstract TransportationDAO transportationDAO();
 
     public static synchronized TravelDatabase getInstance(Context context){
         if(instance == null) {

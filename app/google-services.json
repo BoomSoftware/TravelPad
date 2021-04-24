@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "562803804092",
+    "project_id": "travelpad-f0b3d",
+    "storage_bucket": "travelpad-f0b3d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:562803804092:android:4a8b340a099340bfb54db9",
+        "android_client_info": {
+          "package_name": "com.example.travelpad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "562803804092-s4v0e9fa0qr1c61cvbvqqcjjt8717kbi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAtnInTv1XIsb_WDhzhTplMWv9xi8ps_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "562803804092-s4v0e9fa0qr1c61cvbvqqcjjt8717kbi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

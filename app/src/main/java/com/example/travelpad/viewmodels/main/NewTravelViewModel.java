@@ -1,4 +1,4 @@
-package com.example.travelpad.viewmodels;
+package com.example.travelpad.viewmodels.main;
 
 import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;

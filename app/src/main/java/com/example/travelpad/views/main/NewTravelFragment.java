@@ -3,8 +3,8 @@ package com.example.travelpad.views.main;
 import android.app.DatePickerDialog;
 import android.icu.util.Calendar;
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
@@ -13,9 +13,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.example.travelpad.R;
 import com.example.travelpad.models.Travel;
-import com.example.travelpad.viewmodels.NewTravelViewModel;
+import com.example.travelpad.viewmodels.main.NewTravelViewModel;
+
+import es.dmoral.toasty.Toasty;
 
 public class NewTravelFragment extends Fragment {
 
@@ -53,39 +57,36 @@ public class NewTravelFragment extends Fragment {
 
     private void prepareOnClickEvents(View view){
         startDateEditText.setOnClickListener(v -> {
-            startDatePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                    String date = dayOfMonth + "/" + month + "/" + year;
-                    startDate = date;
-                    startDateEditText.setText(date);
-                }
+            startDatePickerDialog = new DatePickerDialog(getContext(), (view1, year, month, dayOfMonth) -> {
+                String date = dayOfMonth + "/" + month + "/" + year;
+                startDate = date;
+                startDateEditText.setText(date);
             }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
             startDatePickerDialog.show();
         });
 
         endDateEditText.setOnClickListener(v -> {
-            endDatePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                    String date = dayOfMonth + "/" + month + "/" + year;
-                    endDate = date;
-                    endDateEditText.setText(date);
-                }
+            endDatePickerDialog = new DatePickerDialog(getContext(), (view12, year, month, dayOfMonth) -> {
+                String date = dayOfMonth + "/" + month + "/" + year;
+                endDate = date;
+                endDateEditText.setText(date);
             }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
             endDatePickerDialog.show();
         });
 
         confirmButton.setOnClickListener(v -> {
             if(nameEditText.getText() == null || nameEditText.getText().toString().equals("")){
+                Toasty.error(view.getContext(), view.getContext().getString(R.string.empty_name), Toast.LENGTH_SHORT, true).show();
                 return;
             }
 
             if(startDate == null || startDate.equals("") || endDate == null || endDate.equals("")){
+                Toasty.error(view.getContext(), view.getContext().getString(R.string.empty_date), Toast.LENGTH_SHORT, true).show();
                 return;
             }
 
             viewModel.createNewTravel(new Travel(nameEditText.getText().toString(), startDate, endDate));
+            Toasty.success(view.getContext(), view.getContext().getString(R.string.travel_creation_success), Toast.LENGTH_SHORT, true).show();
         });
     }
 }

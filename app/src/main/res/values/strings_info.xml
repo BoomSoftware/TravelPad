@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="empty_name">Name cannot be empty!</string>
+    <string name="empty_date">Choose correct date!</string>
+    <string name="empty_time">Choose correct time!</string>
+    <string name="empty_type">Choose correct type!</string>
+    <string name="empty_starting_point">Choose correct starting point!</string>
+    <string name="empty_destination_point">Choose correct destination point!</string>
+    <string name="empty_price">Choose correct price!</string>
+    <string name="empty_duration">Choose correct duration!</string>
+    <string name="travel_creation_success">Travel has been successfully created!</string>
+    <string name="remove_item">Item has been successfully deleted</string>
+    <string name="transport_creation_success">Transportation has been successfully created!</string>
+    <string name="add_item_dialog_title">Add a new item to your virtual bag</string>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
+</resources>

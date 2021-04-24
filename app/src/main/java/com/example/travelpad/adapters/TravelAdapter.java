@@ -1,13 +1,16 @@
 package com.example.travelpad.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.travelpad.R;
+import com.example.travelpad.TravelActivity;
 import com.example.travelpad.models.Travel;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +34,14 @@ public class TravelAdapter extends RecyclerView.Adapter<TravelAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Travel currentTravel = travels.get(position);
 
-        //test
-        //open travel activity and pass travel id
         holder.itemView.setOnClickListener(v ->{
-            Toast.makeText(holder.itemView.getContext(), String.valueOf(currentTravel.getId()), Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(holder.itemView.getContext(), TravelActivity.class);
+            intent.putExtra("TRAVEL_ID", currentTravel.getId());
+            holder.itemView.getContext().startActivity(intent);
         });
         holder.travelName.setText(currentTravel.getName());
+        String date = currentTravel.getStartDate() + " - " + currentTravel.getEndDate();
+        holder.travelDate.setText(date);
     }
 
     @Override
@@ -52,10 +57,12 @@ public class TravelAdapter extends RecyclerView.Adapter<TravelAdapter.ViewHolder
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView travelName;
+        private TextView travelDate;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            travelName = itemView.findViewById(R.id.text_travel_list_name);
+            travelName = itemView.findViewById(R.id.text_item_name);
+            travelDate = itemView.findViewById(R.id.text_travel_list_date);
         }
     }
 }

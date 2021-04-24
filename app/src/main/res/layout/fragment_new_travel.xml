@@ -72,7 +72,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:background="@drawable/rounded_bg"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/green_200"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,57 +81,72 @@
         app:layout_constraintTop_toBottomOf="@+id/border_bottom_create_travel_subtitle"
         app:layout_constraintVertical_bias="0.3">
 
-        <EditText
-            android:id="@+id/edit_createTravelName"
-            style="@style/login_input"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="15dp"
-            android:drawableStart="@drawable/ic_pen"
-            android:drawablePadding="10dp"
-            android:hint="@string/create_travel_name"
-            android:inputType="textPersonName"
+        <TextView
+            android:id="@+id/text_create_travel_name"
+            style="@style/form_input_title"
+            android:layout_marginTop="25dp"
+            android:text="@string/create_travel_name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/edit_createTravelStartDate"
-            style="@style/login_input"
-            android:layout_marginStart="20dp"
+            android:id="@+id/edit_createTravelName"
+            style="@style/form_input"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_create_travel_name" />
+
+        <TextView
+            android:id="@+id/text_create_travel_start_date"
+            style="@style/form_input_title"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="20dp"
-            android:cursorVisible="false"
-            android:drawableStart="@drawable/ic_calendar"
-            android:drawablePadding="10dp"
-            android:focusable="false"
-            android:focusableInTouchMode="true"
-            android:hint="@string/create_travel_start_date"
+            android:text="@string/create_travel_start_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_createTravelName" />
 
+
         <EditText
-            android:id="@+id/edit_createTravelEndDate"
-            style="@style/login_input"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="20dp"
+            android:id="@+id/edit_createTravelStartDate"
+            style="@style/form_input"
+            android:layout_marginTop="5dp"
             android:cursorVisible="false"
-            android:drawableStart="@drawable/ic_calendar"
-            android:drawablePadding="10dp"
             android:focusable="false"
             android:focusableInTouchMode="true"
-            android:hint="@string/create_travel_end_date"
-            android:inputType="date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_create_travel_start_date" />
+
+        <TextView
+            android:id="@+id/text_create_travel_end_date"
+            style="@style/form_input_title"
+            android:layout_marginTop="15dp"
+            android:text="@string/create_travel_end_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_createTravelStartDate" />
 
+
+        <EditText
+            android:id="@+id/edit_createTravelEndDate"
+            style="@style/form_input"
+            android:layout_marginTop="5dp"
+            android:cursorVisible="false"
+            android:drawablePadding="10dp"
+            android:focusable="false"
+            android:focusableInTouchMode="true"
+            android:inputType="date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_create_travel_end_date" />
+
         <Button
             android:id="@+id/button_createTravelCreate"
-            style="@style/selected_button"
+            style="@style/main_button"
+            android:textColor="@color/green_200"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -145,6 +160,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_createTravelEndDate"
             app:layout_constraintVertical_bias="1.0" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

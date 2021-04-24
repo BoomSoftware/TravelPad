@@ -15,7 +15,6 @@ import java.util.concurrent.Executors;
 public class TravelRepository {
     private static TravelRepository instance;
     private TravelDAO travelDAO;
-    private LiveData<List<Travel>> allTravels;
     private ExecutorService executorService;
 
     private TravelRepository(Application application) {
@@ -37,5 +36,9 @@ public class TravelRepository {
 
     public LiveData<List<Travel>> getAllTravels() {
        return travelDAO.getAllTravels();
+    }
+
+    public LiveData<Travel> getTravelByID(int id) {
+        return travelDAO.getTravelById(id);
     }
 }

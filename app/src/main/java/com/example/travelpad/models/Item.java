@@ -11,8 +11,9 @@ public class Item {
     private String name;
     private boolean isPacked;
 
-    public Item(String name) {
+    public Item(String name, int travelId) {
         this.name = name;
+        this.travelId = travelId;
         isPacked = false;
     }
 

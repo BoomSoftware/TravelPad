@@ -3,43 +3,44 @@ package com.example.travelpad.models;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Transportation {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private int travelId;
+    private boolean isTicketBought;
+    private String direction;
+    private String type;
+    private String startingDate;
 
-    private int duration;
+    private int durationHour;
+    private int durationMinute;
     private double price;
 
     private String destinationPointName;
     private String startingPointName;
 
+    private String ticketPath;
+
     private int startingHour;
     private int startingMinute;
 
-    private int endingHour;
-    private int endingMinute;
-
-    //ticket photos
-
-    public Transportation(int duration, double price, String destinationPointName, String startingPointName, int startingHour, int startingMinute, int endingHour, int endingMinute) {
-        this.duration = duration;
+    public Transportation(int travelId, int durationHour, int durationMinute, double price, String destinationPointName, String startingPointName, String startingDate, int startingHour, int startingMinute, String direction, String type) {
+        this.durationHour = durationHour;
+        this.durationMinute = durationMinute;
         this.price = price;
+        this.travelId = travelId;
         this.destinationPointName = destinationPointName;
         this.startingPointName = startingPointName;
         this.startingHour = startingHour;
         this.startingMinute = startingMinute;
-        this.endingHour = endingHour;
-        this.endingMinute = endingMinute;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
+        this.direction = direction;
+        this.isTicketBought = false;
+        this.startingDate = startingDate;
+        this.type = type;
     }
 
     public double getPrice() {
@@ -82,20 +83,20 @@ public class Transportation {
         this.startingMinute = startingMinute;
     }
 
-    public int getEndingHour() {
-        return endingHour;
+    public String getDirection() {
+        return direction;
     }
 
-    public void setEndingHour(int endingHour) {
-        this.endingHour = endingHour;
+    public void setDirection(String direction) {
+        this.direction = direction;
     }
 
-    public int getEndingMinute() {
-        return endingMinute;
+    public boolean isTicketBought() {
+        return isTicketBought;
     }
 
-    public void setEndingMinute(int endingMinute) {
-        this.endingMinute = endingMinute;
+    public void setTicketBought(boolean ticketBought) {
+        isTicketBought = ticketBought;
     }
 
     public int getId() {
@@ -112,5 +113,45 @@ public class Transportation {
 
     public void setTravelId(int travelId) {
         this.travelId = travelId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getStartingDate() {
+        return startingDate;
+    }
+
+    public void setStartingDate(String startingDate) {
+        this.startingDate = startingDate;
+    }
+
+    public int getDurationHour() {
+        return durationHour;
+    }
+
+    public void setDurationHour(int durationHour) {
+        this.durationHour = durationHour;
+    }
+
+    public int getDurationMinute() {
+        return durationMinute;
+    }
+
+    public void setDurationMinute(int durationMinute) {
+        this.durationMinute = durationMinute;
+    }
+
+    public String getTicketPath() {
+        return ticketPath;
+    }
+
+    public void setTicketPath(String ticketPath) {
+        this.ticketPath = ticketPath;
     }
 }

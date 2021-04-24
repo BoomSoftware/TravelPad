@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bag">VIRTUAL BAG</string>
+    <string name="hotel">HOTEL</string>
+    <string name="transport_from">TRANSPORT \nFROM</string>
+    <string name="transport_to">TRANSPORT \nTO</string>
+    <string name="bag_title">Virtual Bag</string>
+    <string name="item_name">Item name</string>
+    <string name="dialog_add_transport_title">Add a new transportation</string>
+    <string name="transportation_type">Transportation type</string>
+    <string name="starting_point">Starting point</string>
+    <string name="destination_point">Destination point</string>
+    <string name="start_datetime">Start date and time</string>
+    <string name="not_selected">Not selected</string>
+    <string name="price_and_duration">Price and duration</string>
+    <string name="select_img">Files</string>
+    <string name="take_picture">Camera</string>
+    <string name="add_ticket_title">Add a new ticket</string>
+</resources>

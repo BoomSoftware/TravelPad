@@ -10,12 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.travelpad.R;
 import com.example.travelpad.adapters.TravelAdapter;
-import com.example.travelpad.models.Travel;
-import com.example.travelpad.viewmodels.TravelListViewModel;
+import com.example.travelpad.viewmodels.main.TravelListViewModel;
+
+import java.util.Collections;
 
 public class TravelsFragment extends Fragment {
 
@@ -42,6 +42,7 @@ public class TravelsFragment extends Fragment {
         travelList.setAdapter(adapter);
 
         viewModel.getTravels().observe(getViewLifecycleOwner(), travels -> {
+            Collections.reverse(travels);
             adapter.setTravels(travels);
         });
 

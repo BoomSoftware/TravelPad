@@ -19,4 +19,8 @@ public interface TravelDAO {
     @Transaction
     @Query("SELECT * FROM Travel")
     LiveData<List<Travel>> getAllTravels();
+
+    @Transaction
+    @Query("SELECT * FROM Travel WHERE id=:id")
+    LiveData<Travel> getTravelById(int id);
 }
