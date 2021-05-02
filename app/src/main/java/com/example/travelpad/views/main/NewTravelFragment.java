@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -49,9 +48,9 @@ public class NewTravelFragment extends Fragment {
     private void prepareUI(View view) {
         calendar = Calendar.getInstance();
 
-        confirmButton = view.findViewById(R.id.button_createTravelCreate);
-        endDateEditText = view.findViewById(R.id.edit_createTravelEndDate);
-        startDateEditText = view.findViewById(R.id.edit_createTravelStartDate);
+        confirmButton = view.findViewById(R.id.button_confirm_add_hotel);
+        endDateEditText = view.findViewById(R.id.edit_stay_duration);
+        startDateEditText = view.findViewById(R.id.edit_hotel_price_per_day);
         nameEditText = view.findViewById(R.id.edit_createTravelName);
     }
 

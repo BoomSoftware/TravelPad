@@ -11,7 +11,9 @@
 /build
 /captures
 .externalNativeBuild
-.cxx
 local.properties
+apikey.properties
 /.idea/jarRepositories.xml
 /.idea/vcs.xml
+**/*/res/values/secrets.xml"
+/app/src/main/res/values/secrets.xml

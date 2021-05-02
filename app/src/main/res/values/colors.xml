@@ -12,6 +12,7 @@
     <color name="blue_800">#596E87</color>
     <color name="gray_100">#F3F4F7</color>
     <color name="gray_400">#B6B6B6</color>
+    <color name="gray_500">#FF8A8A8A</color>
 
     <color name="green_200">#65bf7a</color>
     <color name="green_400">#0DAB49</color>
@@ -20,4 +21,5 @@
     //warnings
     <color name="warning_light">#FFBB33</color>
     <color name="warning_dark">#FF8800</color>
+
 </resources>

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.travelpad.R;
 import com.example.travelpad.TravelActivity;
+import com.example.travelpad.models.Transportation;
 import com.example.travelpad.models.Travel;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +52,11 @@ public class TravelAdapter extends RecyclerView.Adapter<TravelAdapter.ViewHolder
 
     public void setTravels(List<Travel> travels) {
         this.travels = travels;
-        //maybe replace later
         notifyDataSetChanged();
+    }
+
+    public Travel getItemAt(int position) {
+        return travels.get(position);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

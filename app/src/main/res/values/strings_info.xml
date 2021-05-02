@@ -6,6 +6,9 @@
     <string name="empty_type">Choose correct type!</string>
     <string name="empty_starting_point">Choose correct starting point!</string>
     <string name="empty_destination_point">Choose correct destination point!</string>
+    <string name="empty_hotel_place">Choose correct place!</string>
+    <string name="empty_price_per_day">Choose correct price!</string>
+    <string name="empty_stay_duration">Choose correct stay duration!</string>
     <string name="empty_price">Choose correct price!</string>
     <string name="empty_duration">Choose correct duration!</string>
     <string name="travel_creation_success">Travel has been successfully created!</string>
@@ -13,5 +16,9 @@
     <string name="transport_creation_success">Transportation has been successfully created!</string>
     <string name="add_item_dialog_title">Add a new item to your virtual bag</string>
     <string name="add">Add</string>
+    <string name="total_price">Total price:</string>
+    <string name="add_reservation">Add reservation</string>
+    <string name="added_hotel">Hotel has been successfully added</string>
+    <string name="reservation">Reservation</string>
     <string name="cancel">Cancel</string>
 </resources>

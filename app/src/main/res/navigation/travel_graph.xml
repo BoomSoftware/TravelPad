@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_goToTransportation"
             app:destination="@id/travelTransportationFragment" />
+        <action
+            android:id="@+id/action_goToHotel"
+            app:destination="@id/hotelListFragment" />
     </fragment>
     <fragment
         android:id="@+id/virtualBagFragment"
@@ -36,4 +39,26 @@
         android:name="com.example.travelpad.views.travel.AddTransportationFragment"
         android:label=""
         tools:layout="@layout/fragment_add_transportation" />
+    <fragment
+        android:id="@+id/hotelListFragment"
+        android:name="com.example.travelpad.views.travel.HotelListFragment"
+        android:label=""
+        tools:layout="@layout/fragment_hotel_list" >
+        <action
+            android:id="@+id/action_goToAddHotel"
+            app:destination="@id/addHotelFragment" />
+        <action
+            android:id="@+id/action_hotelListFragment_to_hotelMapFragment"
+            app:destination="@id/hotelMapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addHotelFragment"
+        android:name="com.example.travelpad.views.travel.AddHotelFragment"
+        android:label=""
+        tools:layout="@layout/fragment_add_hotel" />
+    <fragment
+        android:id="@+id/hotelMapFragment"
+        android:name="com.example.travelpad.views.travel.HotelMapFragment"
+        android:label=""
+        tools:layout="@layout/fragment_hotel_map" />
 </navigation>

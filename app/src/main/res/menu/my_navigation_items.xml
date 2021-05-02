@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group>
-        <item android:id="@+id/nav_item_one"
-            android:title="Item 1" />
-        <item android:id="@+id/nav_item_two"
-            android:title="Item 2" />
-        <item android:id="@+id/nav_item_three"
-            android:title="Item 3" />
+        <item android:id="@+id/nav_item_home_page"
+            android:icon="@drawable/ic_general_homepage"
+            android:title="@string/nav_item_homepage" />
+        <item android:id="@+id/nav_item_add_travel"
+            android:icon="@drawable/ic_general_add"
+            android:title="@string/nav_item_add_travel" />
+        <item android:id="@+id/nav_item_travel_list"
+            android:icon="@drawable/ic_general_travel"
+            android:title="@string/nav_item_travels" />
+        <item android:id="@+id/nav_item_ideas"
+            android:icon="@drawable/ic_general_idea"
+            android:title="@string/nav_item_ideas" />
+        <item android:id="@+id/nav_item_logout"
+            android:icon="@drawable/ic_general_logout"
+            android:title="@string/nav_item_logout" />
     </group>
-
-    <group android:id="@+id/group_menu">
-        <item android:id="@+id/nav_item_four"
-            android:title="Item 4" />
-        <item android:id="@+id/nav_item_five"
-            android:title="Item 5" />
-    </group>
-
-    <item android:title="Title 1">
-        <menu>
-            <item android:id="@+id/nav_item_six"
-                android:title="Item 6" />
-            <item android:id="@+id/nav_item_logout"
-                android:title="Logout" />
-        </menu>
-    </item>
 </menu>

@@ -2,12 +2,16 @@ package com.example.travelpad.views.travel;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.SharedPreferences;
 import android.icu.util.Calendar;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.preference.PreferenceManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +32,7 @@ import com.example.travelpad.models.Transportation;
 import com.example.travelpad.models.TransportationTypes;
 import com.example.travelpad.viewmodels.travel.TransportationViewModel;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -64,7 +69,6 @@ public class AddTransportationFragment extends Fragment {
 
     private String direction;
     private int travelID;
-    private List<String> types;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -80,7 +84,6 @@ public class AddTransportationFragment extends Fragment {
 
     private void prepareUI(){
         calendar = Calendar.getInstance();
-        types = new ArrayList<>();
 
         transportationTypeSpinner = view.findViewById(R.id.spinner_transportation_type);
         startingPointEditText = view.findViewById(R.id.edit_add_transportation_start_point);
@@ -95,13 +98,9 @@ public class AddTransportationFragment extends Fragment {
     }
 
     private void prepareOnClickEvents() {
-
-        TransportationTypes[] typesTemp = TransportationTypes.values();
-        for(int i = 0 ; i < typesTemp.length - 1; i++){
-            types.add(typesTemp[i].toString());
-        }
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(view.getContext(), R.layout.row_spinner_type_item, types);
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(view.getContext(), R.layout.row_spinner_type_item, getResources().getStringArray(R.array.transport));
         transportationTypeSpinner.setAdapter(spinnerAdapter);
+        selectDefaultValue();
 
         dateImageView.setOnClickListener(v-> {
             datePickerDialog = new DatePickerDialog(getContext(), (view, year, month, dayOfMonth) -> {
@@ -135,10 +134,6 @@ public class AddTransportationFragment extends Fragment {
 
 
         addNewTransportationButton.setOnClickListener(v-> {
-            if(transportationTypeSpinner.getSelectedItem() == null || types.get(transportationTypeSpinner.getSelectedItemPosition()).equals("")){
-                Toasty.error(view.getContext(), view.getContext().getString(R.string.empty_type), Toast.LENGTH_SHORT, true).show();
-                return;
-            }
             if(startingPointEditText == null || startingPointEditText.getText().toString().equals("")){
                 Toasty.error(view.getContext(), view.getContext().getString(R.string.empty_starting_point), Toast.LENGTH_SHORT, true).show();
                 return;
@@ -174,9 +169,33 @@ public class AddTransportationFragment extends Fragment {
                     hours,
                     minutes,
                     direction,
-                    types.get(transportationTypeSpinner.getSelectedItemPosition()));
+                    transportationTypeSpinner.getSelectedItem().toString());
             viewModel.addTransportationToTravel(transportation);
             Toasty.success(view.getContext(), view.getContext().getString(R.string.transport_creation_success), Toast.LENGTH_SHORT, true).show();
         });
+    }
+
+    private void selectDefaultValue(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String transport = sharedPreferences.getString("pref_transport", "");
+
+        if(transport.equals(getResources().getStringArray(R.array.transport)[0])){
+            transportationTypeSpinner.setSelection(0);
+        }
+        if(transport.equals(getResources().getStringArray(R.array.transport)[1])){
+            transportationTypeSpinner.setSelection(1);
+        }
+        if(transport.equals(getResources().getStringArray(R.array.transport)[2])){
+            transportationTypeSpinner.setSelection(2);
+        }
+        if(transport.equals(getResources().getStringArray(R.array.transport)[3])){
+            transportationTypeSpinner.setSelection(3);
+        }
+        if(transport.equals(getResources().getStringArray(R.array.transport)[4])){
+            transportationTypeSpinner.setSelection(4);
+        }
+        if(transport.equals(getResources().getStringArray(R.array.transport)[5])){
+            transportationTypeSpinner.setSelection(5);
+        }
     }
 }

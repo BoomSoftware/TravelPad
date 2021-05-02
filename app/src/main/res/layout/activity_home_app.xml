@@ -47,6 +47,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/drawer_main_header"
+        app:itemTextColor="@color/gray_500"
+        app:itemIconTint="@color/gray_500"
         app:menu="@menu/my_navigation_items"
         android:fitsSystemWindows="true"/>
 

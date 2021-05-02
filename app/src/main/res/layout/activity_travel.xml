@@ -42,12 +42,14 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
+        android:id="@+id/nav_view_travel"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        app:itemTextColor="@color/gray_500"
+        app:itemIconTint="@color/gray_500"
         app:headerLayout="@layout/drawer_main_header"
-        app:menu="@menu/my_navigation_items"
+        app:menu="@menu/travel_navigation_items"
         android:fitsSystemWindows="true"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

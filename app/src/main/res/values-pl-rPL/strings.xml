@@ -25,6 +25,9 @@
     <string name="hotel">HOTEL\n</string>
     <string name="transport_to">TRANSPORT \nDO</string>
     <string name="transport_from">TRANSPORT \nZ</string>
+    <string name="hotel_title">Hotel</string>
+    <string name="transport_to_title">Transport do</string>
+    <string name="transport_from_title">Transport z</string>
     <string name="remove_item">Przedmiot został usunięty</string>
     <string name="add_item_dialog_title">Dodaj przedmiot do bagażu wirtualnego</string>
     <string name="item_name">Nazwa przedmiotu</string>
@@ -46,4 +49,44 @@
     <string name="select_img">Pliki</string>
     <string name="take_picture">Aparat</string>
     <string name="add_ticket_title">Dodaj nowy bilet</string>
+    <string name="nav_item_homepage">Strona główna</string>
+    <string name="nav_item_add_travel">Dodaj podróż</string>
+    <string name="nav_item_travels">Lista podróży</string>
+    <string name="nav_item_ideas">Pomysły</string>
+    <string name="nav_item_logout">Wyloguj</string>
+    <string name="price_per_day">Cena za dobę</string>
+    <string name="stay_duration">Długość pobytu</string>
+    <string name="add_hotel">Dodaj hotel</string>
+    <string name="add_hotel_title">Wybierz swój hotel</string>
+    <string name="add_hotel_description">Wybierz spośród wszystkich miejsc dostępnych w Google</string>
+    <string name="empty_hotel_place">Wybierz poprawne miejsce!</string>
+    <string name="empty_price_per_day">Podaj poprawną cenę!</string>
+    <string name="empty_stay_duration">Podaj poprawą długość pobytu!</string>
+    <string name="total_price">Cena całkowita:</string>
+    <string name="add_reservation">Dodaj rezerwację</string>
+    <string name="reservation">Rezerwacja</string>
+    <string name="added_hotel">Hotel został dodany!</string>
+    <string name="unpacked_items">Przedmioty niezapakowane:</string>
+    <string name="transport_without_ticket">Transporty bez biletu:</string>
+    <string name="hotel_without_reservation">Hotele bez rezerwacji:</string>
+
+
+    <string name="feedback">Opinia</string>
+    <string name="feedback_title">Wyślij opinię</string>
+    <string name="feedback_description">Zgłoś problemy techniczne lub zasugeruj nowe funkcje</string>
+    <string name="feedback_mail_text">Twoja opinia</string>
+    <string name="currency">Domyślna waluta</string>
+    <string name="transport">Domyślny środek transportu</string>
+
+    <string name="train">Pociąg</string>
+    <string name="bus">Autobus</string>
+    <string name="plane">Samolot</string>
+    <string name="tram">Tramwaj</string>
+    <string name="car">Samochód</string>
+    <string name="boat">Łódź</string>
+
+    <string name="empty_transport">Nie dodano żadnego transportu. Kliknij przycisk i dodaj transport do swojej podróży.</string>
+    <string name="empty_virtual_bag">Nie dodano żadnego przedmiotu. Kliknij przycisk i dodaj nowy przedmiot do swojego wirtualnego bagażu</string>
+    <string name="empty_hotel">Nie dodano żadnego hotelu. Kliknij przycisk i dodaj hotel do swojej podróży</string>
+    <string name="empty_travel">Nie dodano żadnej podróży. Dodaj nową podróż przy użyciu fromularza z menu głównego</string>
 </resources>

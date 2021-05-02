@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -25,6 +26,8 @@ public class HomeAppActivity extends AppCompatActivity implements NavigationView
 
     private HomeAppActivityViewModel homeAppActivityViewModel;
     private NavigationView navigationView;
+    private NavController navController;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +44,27 @@ public class HomeAppActivity extends AppCompatActivity implements NavigationView
         switch (item.getItemId()) {
             case R.id.nav_item_logout: {
                 homeAppActivityViewModel.signOut();
+                break;
+            }
+            case R.id.nav_item_home_page: {
+                navController.navigate(R.id.mainViewFragment);
+                drawerLayout.close();
+                break;
+            }
+            case R.id.nav_item_add_travel: {
+                navController.navigate(R.id.newTravelFragment);
+                drawerLayout.close();
+                break;
+            }
+            case R.id.nav_item_ideas: {
+                navController.navigate(R.id.ideasFragment);
+                drawerLayout.close();
+                break;
+            }
+            case R.id.nav_item_travel_list: {
+                navController.navigate(R.id.travelsFragment);
+                drawerLayout.close();
+                break;
             }
         }
         return true;
@@ -48,8 +72,8 @@ public class HomeAppActivity extends AppCompatActivity implements NavigationView
 
     private void prepareToolbar() {
          NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_fragment_main);
-         NavController navController = navHostFragment.getNavController();
-         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+         navController = navHostFragment.getNavController();
+         drawerLayout = findViewById(R.id.drawer_layout);
          AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
 
          MaterialToolbar toolbar = findViewById(R.id.toolbar);
@@ -78,13 +102,14 @@ public class HomeAppActivity extends AppCompatActivity implements NavigationView
         View navHeader = navigationView.getHeaderView(0);
         ImageView avatar = navHeader.findViewById(R.id.img_nav_header);
         TextView userName = navHeader.findViewById(R.id.text_nav_header_name);
+        TextView userEmail = navHeader.findViewById(R.id.text_nav_header_email);
 
         homeAppActivityViewModel.getCurrentUser().observe(this, user -> {
             if(user != null){
                 userName.setText(user.getDisplayName());
+                userEmail.setText(user.getEmail());
                 Glide.with(this).load(user.getPhotoUrl()).into(avatar);
             }
-
         });
     }
 }

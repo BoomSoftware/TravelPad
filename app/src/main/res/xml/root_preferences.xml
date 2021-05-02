@@ -1,0 +1,42 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:icon="@drawable/ic_money"
+        android:key="pref_currency"
+        android:title="@string/currency"
+        android:summary="%s"
+        android:entries="@array/currency"
+        android:entryValues="@array/currency"
+        android:defaultValue="0" />
+    <ListPreference
+        android:icon="@drawable/ic_tram"
+        android:key="pref_transport"
+        android:title="@string/transport"
+        android:summary="%s"
+        android:entries="@array/transport"
+        android:entryValues="@array/transport"
+        android:defaultValue="0" />
+
+    <Preference
+        android:icon="@drawable/ic_feedback"
+        app:key="feedback"
+        app:title="@string/feedback_title"
+        app:summary="@string/feedback_description">
+        <intent
+            android:action="android.intent.action.SEND"
+            android:data="company-feedback@travelpad.com"
+            android:mimeType="text/email">
+            <extra
+                android:name="android.intent.extra.EMAIL"
+                android:value="mailto@email.com"/>
+            <extra
+                android:name="android.intent.extra.SUBJECT"
+                android:value="@string/feedback"/>
+            <extra
+                android:name="android.intent.extra.TEXT"
+                android:value="@string/feedback_mail_text"/>
+        </intent>
+    </Preference>
+
+</PreferenceScreen>

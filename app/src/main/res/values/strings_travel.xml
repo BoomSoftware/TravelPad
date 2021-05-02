@@ -4,7 +4,10 @@
     <string name="hotel">HOTEL</string>
     <string name="transport_from">TRANSPORT \nFROM</string>
     <string name="transport_to">TRANSPORT \nTO</string>
+    <string name="transport_to_title">Transport to</string>
+    <string name="transport_from_title">Transport from</string>
     <string name="bag_title">Virtual Bag</string>
+    <string name="hotel_title">Hotel</string>
     <string name="item_name">Item name</string>
     <string name="dialog_add_transport_title">Add a new transportation</string>
     <string name="transportation_type">Transportation type</string>
@@ -16,4 +19,38 @@
     <string name="select_img">Files</string>
     <string name="take_picture">Camera</string>
     <string name="add_ticket_title">Add a new ticket</string>
+    <string name="nav_item_homepage">Home page</string>
+    <string name="nav_item_add_travel">Add travel</string>
+    <string name="nav_item_travels">Travel list</string>
+    <string name="nav_item_ideas">Ideas</string>
+    <string name="nav_item_logout">Logout</string>
+    <string name="hotel_place" translatable="false">Hotel</string>
+    <string name="price_per_day">Price per day</string>
+    <string name="stay_duration">Stay duration</string>
+    <string name="add_hotel">Add hotel</string>
+    <string name="add_hotel_title">Select your hotel</string>
+    <string name="add_hotel_description">Choose from all places available on Google</string>
+    <string name="unpacked_items">Items not packed:</string>
+    <string name="transport_without_ticket">Transportation without ticket:</string>
+    <string name="hotel_without_reservation">Hotels without reservation:</string>
+
+
+    <!--    transports-->
+    <string name="train">train</string>
+    <string name="bus">bus</string>
+    <string name="plane">plane</string>
+    <string name="tram">tram</string>
+    <string name="car">car</string>
+    <string name="boat">boat</string>
+
+
+    <string name="empty_transport">No transport has been added. Click the button and add a new transport to your travel.</string>
+    <string name="empty_virtual_bag">No item has been added. Click the button and add new item to your virtual bag</string>
+    <string name="empty_hotel">No hotel has been added. Click the button and add a new hotel to your travel</string>
+    <string name="empty_travel">No travel has been added. Add new travel from main menu</string>
+
+
+
+    <!--    images description-->
+    <string name="background_img_description" translatable="false">BACKGROUND</string>
 </resources>

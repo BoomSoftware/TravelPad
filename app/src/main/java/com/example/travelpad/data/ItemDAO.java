@@ -25,4 +25,10 @@ public interface ItemDAO {
 
     @Query("UPDATE Item SET isPacked=:status WHERE id=:itemId")
     void changeItemPackedStatus(int itemId, boolean status);
+
+    @Query("SELECT COUNT(id) FROM Item WHERE isPacked=0 AND travelId=:travelId")
+    LiveData<Integer> getNotPackedItems(int travelId);
+
+    @Query("DELETE FROM Item WHERE travelId=:travelId")
+    void removeItemsInTravel(int travelId);
 }

@@ -72,16 +72,18 @@
         android:layout_marginEnd="50dp"
         android:columnCount="2"
         android:useDefaultMargins="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/border_bottom_create_travel_subtitle">
+        app:layout_constraintTop_toBottomOf="@+id/border_bottom_create_travel_subtitle"
+        app:layout_constraintVertical_bias="0.30">
 
         <Button
             android:id="@+id/button_travel_virtual_bag"
             style="@style/selected_button"
+            android:layout_marginEnd="10dp"
             android:drawableTop="@drawable/ic_general_add"
             android:gravity="center"
-            android:layout_marginEnd="10dp"
             android:text="@string/main_nav_new_travel"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/border_bottom_create_travel_subtitle" />

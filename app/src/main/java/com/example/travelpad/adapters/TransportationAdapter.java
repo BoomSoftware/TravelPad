@@ -2,6 +2,7 @@ package com.example.travelpad.adapters;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,24 +12,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.travelpad.R;
 import com.example.travelpad.TravelActivity;
 import com.example.travelpad.models.Transportation;
-import com.example.travelpad.models.TransportationTypes;
-import com.example.travelpad.viewmodels.travel.TransportationViewModel;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public class TransportationAdapter extends RecyclerView.Adapter<TransportationAdapter.ViewHolder> {
     private List<Transportation> transportationList;
+    private String[] transportTypes;
+    private SharedPreferences sharedPreferences;
     private Activity activity;
 
-    public TransportationAdapter(Activity activity) {
+    public TransportationAdapter(Activity activity, String[] transportTypes) {
         this.activity = activity;
+        this.transportTypes = transportTypes;
         transportationList = new ArrayList<>();
     }
 
@@ -44,6 +46,9 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Transportation currentTransportation = transportationList.get(position);
 
+        String price = currentTransportation.getPrice() + " " +sharedPreferences.getString("pref_currency", "");
+
+        holder.price.setText(price);
         holder.iconName.setText(currentTransportation.getType());
         holder.startingPointName.setText(currentTransportation.getStartingPointName());
         holder.destinationPointName.setText(currentTransportation.getDestinationPointName());
@@ -89,28 +94,31 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
         String destDate = calendar.get(Calendar.DAY_OF_MONTH) + "/" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.YEAR) + " " + destHour + ":" + destMin;
         holder.destinationDate.setText(destDate);
 
-
-        if(currentTransportation.getType().equals(TransportationTypes.BOAT.toString())){
+        if(currentTransportation.getType().equals(transportTypes[0])){
             holder.icon.setImageResource(R.drawable.ic_boat);
         }
-        else if(currentTransportation.getType().equals(TransportationTypes.CAR.toString())){
+        else if(currentTransportation.getType().equals(transportTypes[5])){
             holder.icon.setImageResource(R.drawable.ic_car);
         }
-        else if(currentTransportation.getType().equals(TransportationTypes.TRAIN.toString())){
+        else if(currentTransportation.getType().equals(transportTypes[1])){
             holder.icon.setImageResource(R.drawable.ic_travel_transport);
         }
-        else if(currentTransportation.getType().equals(TransportationTypes.TRAM.toString())){
+        else if(currentTransportation.getType().equals(transportTypes[4])){
             holder.icon.setImageResource(R.drawable.ic_tram);
         }
-        else if(currentTransportation.getType().equals(TransportationTypes.PLANE.toString())){
+        else if(currentTransportation.getType().equals(transportTypes[2])){
             holder.icon.setImageResource(R.drawable.ic_plane);
         }
-        else if(currentTransportation.getType().equals(TransportationTypes.BUS.toString())){
+        else if(currentTransportation.getType().equals(transportTypes[3])){
             holder.icon.setImageResource(R.drawable.ic_bus);
         }
 
         addTicketEvent(holder.addTicketButton, currentTransportation);
         viewTicketEvent(holder.viewTicketsButton, currentTransportation);
+    }
+
+    public Transportation getItemAt(int position) {
+        return transportationList.get(position);
     }
 
     @Override
@@ -123,12 +131,17 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
         notifyDataSetChanged();
     }
 
+    public void setPreferences(SharedPreferences sharedPreferences){
+        this.sharedPreferences = sharedPreferences;
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView startingPointName;
         TextView destinationPointName;
         TextView startingDate;
         TextView destinationDate;
         TextView iconName;
+        TextView price;
         ImageView icon;
         TextView duration;
         Button addTicketButton;
@@ -145,13 +158,17 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
             duration = itemView.findViewById(R.id.text_transport_item_duration);
             addTicketButton = itemView.findViewById(R.id.button_transport_item_add_ticket);
             viewTicketsButton = itemView.findViewById(R.id.button_transport_item_view_tickets);
+            price = itemView.findViewById(R.id.text_price);
         }
     }
 
     private void addTicketEvent(Button addTicketButton, Transportation transportation){
         addTicketButton.setOnClickListener(v-> {
-            Intent chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
+            Intent chooseFile = new Intent(Intent.ACTION_OPEN_DOCUMENT);
             chooseFile.setType("*/*");
+            chooseFile.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION
+                    | Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                    | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
             ((TravelActivity)activity).setTransportationID(transportation.getId());
             activity.startActivityForResult(chooseFile, 1);
         });
@@ -160,11 +177,10 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
     private void viewTicketEvent(Button viewTicketButton, Transportation transportation){
         viewTicketButton.setOnClickListener(v-> {
             if(transportation.getTicketPath() != null && !transportation.getTicketPath().equals("")){
-                Uri uri = Uri.parse(transportation.getTicketPath());
                 Intent intent = new Intent(Intent.ACTION_VIEW);
+                Uri uri = Uri.parse(transportation.getTicketPath());
                 intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 intent.setData(uri);
-                System.out.println(uri + "XXXXXXXXXXXXXXXXXXXXXXXXXX");
                 activity.startActivity(intent);
             }
         });

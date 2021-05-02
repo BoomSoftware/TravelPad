@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_item_home_page"
+        android:icon="@drawable/ic_general_homepage"
+        android:title="@string/nav_item_homepage" />
+    <item android:id="@+id/nav_item_virtual_bag"
+        android:icon="@drawable/ic_general_travel"
+        android:title="@string/bag_title" />
+    <item android:id="@+id/nav_item_hotel"
+        android:icon="@drawable/ic_travel_hotel"
+        android:title="@string/hotel_title" />
+    <item android:id="@+id/nav_item_transportation_from"
+        android:icon="@drawable/ic_travel_transport_from"
+        android:title="@string/transport_from_title" />
+    <item android:id="@+id/nav_item_transportation_to"
+        android:icon="@drawable/ic_travel_transport"
+        android:title="@string/transport_to_title" />
+    <item android:id="@+id/nav_item_logout"
+        android:icon="@drawable/ic_general_logout"
+        android:title="@string/nav_item_logout" />
+</menu>

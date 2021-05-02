@@ -46,4 +46,12 @@ public class ItemRepository {
     public LiveData<List<Item>> getItemsForTravel(int travelID) {
        return itemDAO.getVirtualBagForTravel(travelID);
     }
+
+    public LiveData<Integer> getNotPackedItems(int travelId){
+        return  itemDAO.getNotPackedItems(travelId);
+    }
+
+    public void removeItemsInTravel(int id) {
+       executorService.execute(() -> itemDAO.removeItemsInTravel(id));
+    }
 }

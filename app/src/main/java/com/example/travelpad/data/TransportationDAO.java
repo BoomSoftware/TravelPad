@@ -20,13 +20,18 @@ public interface TransportationDAO {
     @Delete
     void deleteTransportation(Transportation transportation);
 
-    @Transaction
     @Query("SELECT * FROM Transportation WHERE travelId=:travelID AND direction=:direction")
     LiveData<List<Transportation>> getTransportationForTravel(int travelID, String direction);
 
-    @Query("UPDATE TRANSPORTATION SET isTicketBought=:status WHERE id=:transportationID")
-    void updateIsBoughtStatus(int transportationID, boolean status);
-
     @Query("UPDATE TRANSPORTATION SET ticketPath=:ticketPath WHERE id=:transportationID")
     void updateTicketPath(int transportationID, String ticketPath);
+
+    @Query("SELECT COUNT(id) FROM Transportation WHERE ticketPath IS NULL AND travelId=:travelId")
+    LiveData<Integer> getTransportationWithoutTicket(int travelId);
+
+    @Query("SELECT SUM(price) FROM Transportation WHERE travelId=:travelId")
+    LiveData<Double> getTransportTotalPrice(int travelId);
+
+    @Query("DELETE FROM Transportation WHERE travelId=:travelId")
+    void removeTransportationInTravel(int travelId);
 }

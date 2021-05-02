@@ -110,7 +110,7 @@
 
 
         <EditText
-            android:id="@+id/edit_createTravelStartDate"
+            android:id="@+id/edit_hotel_price_per_day"
             style="@style/form_input"
             android:layout_marginTop="5dp"
             android:cursorVisible="false"
@@ -127,11 +127,11 @@
             android:text="@string/create_travel_end_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_createTravelStartDate" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_hotel_price_per_day" />
 
 
         <EditText
-            android:id="@+id/edit_createTravelEndDate"
+            android:id="@+id/edit_stay_duration"
             style="@style/form_input"
             android:layout_marginTop="5dp"
             android:cursorVisible="false"
@@ -144,7 +144,7 @@
             app:layout_constraintTop_toBottomOf="@+id/text_create_travel_end_date" />
 
         <Button
-            android:id="@+id/button_createTravelCreate"
+            android:id="@+id/button_confirm_add_hotel"
             style="@style/main_button"
             android:textColor="@color/green_200"
             android:layout_width="wrap_content"
@@ -158,7 +158,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_createTravelEndDate"
+            app:layout_constraintTop_toBottomOf="@+id/edit_stay_duration"
             app:layout_constraintVertical_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

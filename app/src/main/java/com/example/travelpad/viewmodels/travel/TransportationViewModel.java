@@ -32,8 +32,4 @@ public class TransportationViewModel extends AndroidViewModel {
     public void deleteTransportationFromTravel(Transportation transportation) {
         repository.deleteTransportationFromTravel(transportation);
     }
-
-    public void updateTicketPath(int transportationId, String ticketPath){
-        repository.updateTicketPath(transportationId, ticketPath);
-    }
 }

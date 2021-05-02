@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.travelpad.R;
@@ -31,6 +32,7 @@ public class VirtualBagFragment extends Fragment {
     private RecyclerView itemList;
     private FloatingActionButton addButton;
     private VirtualBagAdapter adapter;
+    private TextView emptyVirtualBag;
 
     private View view;
     private int travelID;
@@ -49,6 +51,7 @@ public class VirtualBagFragment extends Fragment {
     private void prepareUI(){
         addButton = view.findViewById(R.id.button_bag_add_item);
         itemList = view.findViewById(R.id.recycler_transportation_list);
+        emptyVirtualBag = view.findViewById(R.id.empty_virtual_bag);
         itemList.hasFixedSize();
         itemList.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
@@ -56,22 +59,16 @@ public class VirtualBagFragment extends Fragment {
         adapter.setVirtualBagViewModel(viewModel);
         itemList.setAdapter(adapter);
         viewModel.getVirtualBagForTravel(travelID).observe(getViewLifecycleOwner(), items -> {
+            if(items.isEmpty()){
+                emptyVirtualBag.setVisibility(View.VISIBLE);
+                itemList.setVisibility(View.GONE);
+                return;
+            }
+            emptyVirtualBag.setVisibility(View.GONE);
+            itemList.setVisibility(View.VISIBLE);
             adapter.setItems(items);
         });
-
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
-                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-            @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                return false;
-            }
-
-            @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                viewModel.removeItemFromVirtualBag(adapter.getItemAt(viewHolder.getAbsoluteAdapterPosition()));
-                Toasty.success(view.getContext(), view.getContext().getString(R.string.remove_item), Toast.LENGTH_SHORT, true).show();
-            }
-        }).attachToRecyclerView(itemList);
+       setSwipeEvent();
     }
 
     private void setAddItemDialog(){
@@ -100,6 +97,22 @@ public class VirtualBagFragment extends Fragment {
             });
 
         });
+    }
+
+    private void setSwipeEvent(){
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                viewModel.removeItemFromVirtualBag(adapter.getItemAt(viewHolder.getAbsoluteAdapterPosition()));
+                Toasty.success(view.getContext(), view.getContext().getString(R.string.remove_item), Toast.LENGTH_SHORT, true).show();
+            }
+        }).attachToRecyclerView(itemList);
     }
 
 

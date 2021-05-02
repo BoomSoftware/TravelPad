@@ -43,11 +43,20 @@ public class TransportationRepository {
         return transportationDAO.getTransportationForTravel(transportationID, direction.toString());
     }
 
-    public void updateIsBoughtStatus(int transportationID, boolean status) {
-        executorService.execute(() -> transportationDAO.updateIsBoughtStatus(transportationID, status));
+    public LiveData<Integer> getTransportationWithoutTicket(int travelId){
+        return transportationDAO.getTransportationWithoutTicket(travelId);
+    }
+
+    public LiveData<Double> getTransportTotalPrice(int travelId){
+        return transportationDAO.getTransportTotalPrice(travelId);
     }
 
     public void updateTicketPath(int transportationID, String ticketPath) {
         executorService.execute(() -> transportationDAO.updateTicketPath(transportationID, ticketPath));
+    }
+
+
+    public void removeTransportationInTravel(int id) {
+        executorService.execute(() -> transportationDAO.removeTransportationInTravel(id));
     }
 }

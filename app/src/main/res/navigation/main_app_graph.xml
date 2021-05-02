@@ -13,23 +13,19 @@
             android:id="@+id/action_goToNewTravel"
             app:destination="@id/newTravelFragment" />
         <action
-            android:id="@+id/action_goToSettings"
-            app:destination="@id/settingsFragment2" />
-        <action
             android:id="@+id/action_goToIdeas"
             app:destination="@id/ideasFragment" />
         <action
             android:id="@+id/action_goToTravels"
             app:destination="@id/travelsFragment" />
+        <action
+            android:id="@+id/action_goToSettings"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/newTravelFragment"
         android:name="com.example.travelpad.views.main.NewTravelFragment"
         tools:layout="@layout/fragment_new_travel" />
-    <fragment
-        android:id="@+id/settingsFragment2"
-        android:name="com.example.travelpad.views.main.SettingsFragment"
-        tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/ideasFragment"
         android:name="com.example.travelpad.views.main.IdeasFragment"
@@ -38,4 +34,8 @@
         android:id="@+id/travelsFragment"
         android:name="com.example.travelpad.views.main.TravelsFragment"
         tools:layout="@layout/fragment_travels" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.travelpad.views.main.SettingsFragment"
+        android:label="" />
 </navigation>

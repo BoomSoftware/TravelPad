@@ -1,6 +1,5 @@
 package com.example.travelpad.models;
 
-import android.location.Location;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -9,42 +8,16 @@ public class Hotel {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private int travelId;
-    private String name;
-    private int stayDays;
-    private int pricePerDay;
-    private double latitude;
-    private double altitude;
+    private String placeId;
+    private int days;
+    private double pricePerDay;
+    private String reservationPath;
 
-    public Hotel(int travelId, String name, int stayDays, int pricePerDay, double latitude, double altitude) {
+
+    public Hotel(int travelId, String placeId, int days, double pricePerDay) {
         this.travelId = travelId;
-        this.name = name;
-        this.stayDays = stayDays;
-        this.pricePerDay = pricePerDay;
-        this.latitude = latitude;
-        this.altitude = altitude;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getStayDays() {
-        return stayDays;
-    }
-
-    public void setStayDays(int stayDays) {
-        this.stayDays = stayDays;
-    }
-
-    public int getPricePerDay() {
-        return pricePerDay;
-    }
-
-    public void setPricePerDay(int pricePerDay) {
+        this.placeId = placeId;
+        this.days = days;
         this.pricePerDay = pricePerDay;
     }
 
@@ -64,19 +37,35 @@ public class Hotel {
         this.travelId = travelId;
     }
 
-    public double getLatitude() {
-        return latitude;
+    public String getPlaceId() {
+        return placeId;
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
+    public void setPlaceId(String placeId) {
+        this.placeId = placeId;
     }
 
-    public double getAltitude() {
-        return altitude;
+    public int getDays() {
+        return days;
     }
 
-    public void setAltitude(double altitude) {
-        this.altitude = altitude;
+    public void setDays(int days) {
+        this.days = days;
+    }
+
+    public double getPricePerDay() {
+        return pricePerDay;
+    }
+
+    public void setPricePerDay(double pricePerDay) {
+        this.pricePerDay = pricePerDay;
+    }
+
+    public String getReservationPath() {
+        return reservationPath;
+    }
+
+    public void setReservationPath(String reservationPath) {
+        this.reservationPath = reservationPath;
     }
 }

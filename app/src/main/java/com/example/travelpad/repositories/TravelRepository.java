@@ -41,4 +41,8 @@ public class TravelRepository {
     public LiveData<Travel> getTravelByID(int id) {
         return travelDAO.getTravelById(id);
     }
+
+    public void removeTravel(Travel travel) {
+        executorService.execute(() -> travelDAO.removeTravel(travel));
+    }
 }
