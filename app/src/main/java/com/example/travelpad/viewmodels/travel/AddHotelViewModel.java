@@ -17,7 +17,7 @@ public class AddHotelViewModel extends AndroidViewModel {
         hotelRepository = HotelRepository.getInstance(application);
     }
 
-    public void addNewHotel(Hotel hotel){
-        hotelRepository.addHotelToTravel(hotel);
+    public void addNewHotel(String apiKey, Hotel hotel, String placeId){
+        hotelRepository.searchForHotel(apiKey ,hotel, placeId);
     }
 }

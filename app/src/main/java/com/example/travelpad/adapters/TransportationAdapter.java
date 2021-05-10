@@ -46,7 +46,7 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Transportation currentTransportation = transportationList.get(position);
 
-        String price = currentTransportation.getPrice() + " " +sharedPreferences.getString("pref_currency", "");
+        String price = String.format("%.2f", currentTransportation.getPrice()) + " " +sharedPreferences.getString("pref_currency", "");
 
         holder.price.setText(price);
         holder.iconName.setText(currentTransportation.getType());
@@ -94,24 +94,7 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
         String destDate = calendar.get(Calendar.DAY_OF_MONTH) + "/" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.YEAR) + " " + destHour + ":" + destMin;
         holder.destinationDate.setText(destDate);
 
-        if(currentTransportation.getType().equals(transportTypes[0])){
-            holder.icon.setImageResource(R.drawable.ic_boat);
-        }
-        else if(currentTransportation.getType().equals(transportTypes[5])){
-            holder.icon.setImageResource(R.drawable.ic_car);
-        }
-        else if(currentTransportation.getType().equals(transportTypes[1])){
-            holder.icon.setImageResource(R.drawable.ic_travel_transport);
-        }
-        else if(currentTransportation.getType().equals(transportTypes[4])){
-            holder.icon.setImageResource(R.drawable.ic_tram);
-        }
-        else if(currentTransportation.getType().equals(transportTypes[2])){
-            holder.icon.setImageResource(R.drawable.ic_plane);
-        }
-        else if(currentTransportation.getType().equals(transportTypes[3])){
-            holder.icon.setImageResource(R.drawable.ic_bus);
-        }
+        loadTransportationIcon(currentTransportation, holder);
 
         addTicketEvent(holder.addTicketButton, currentTransportation);
         viewTicketEvent(holder.viewTicketsButton, currentTransportation);
@@ -133,6 +116,27 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
 
     public void setPreferences(SharedPreferences sharedPreferences){
         this.sharedPreferences = sharedPreferences;
+    }
+
+    private void loadTransportationIcon(Transportation currentTransportation, ViewHolder holder){
+        if(currentTransportation.getType().equals(transportTypes[0])){
+            holder.icon.setImageResource(R.drawable.ic_boat);
+        }
+        else if(currentTransportation.getType().equals(transportTypes[5])){
+            holder.icon.setImageResource(R.drawable.ic_car);
+        }
+        else if(currentTransportation.getType().equals(transportTypes[1])){
+            holder.icon.setImageResource(R.drawable.ic_travel_transport);
+        }
+        else if(currentTransportation.getType().equals(transportTypes[4])){
+            holder.icon.setImageResource(R.drawable.ic_tram);
+        }
+        else if(currentTransportation.getType().equals(transportTypes[2])){
+            holder.icon.setImageResource(R.drawable.ic_plane);
+        }
+        else if(currentTransportation.getType().equals(transportTypes[3])){
+            holder.icon.setImageResource(R.drawable.ic_bus);
+        }
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

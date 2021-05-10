@@ -32,7 +32,7 @@ public class TravelActivity extends AppCompatActivity implements NavigationView.
     private int travelID;
     private TravelActivityViewModel viewModel;
     private int transportationID;
-    private String placeId;
+    private int placeId;
     private NavigationView navigationView;
     private NavController navController;
     private DrawerLayout drawerLayout;
@@ -84,7 +84,7 @@ public class TravelActivity extends AppCompatActivity implements NavigationView.
         transportationID = id;
     }
 
-    public void setPlaceId(String id) {
+    public void setPlaceId(int id) {
         placeId = id;
     }
 

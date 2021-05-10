@@ -14,14 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.travelpad.R;
 import com.example.travelpad.TravelActivity;
 import com.example.travelpad.adapters.HotelAdapter;
-import com.example.travelpad.models.Hotel;
 import com.example.travelpad.viewmodels.travel.HotelListViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -30,9 +29,9 @@ import es.dmoral.toasty.Toasty;
 public class HotelListFragment extends Fragment {
 
     private View view;
+    private ProgressBar progressBar;
     private HotelListViewModel viewModel;
     private HotelAdapter adapter;
-    private FloatingActionButton addButton;
     private RecyclerView hotelList;
     private TextView emptyHotel;
     private int travelID;
@@ -49,19 +48,22 @@ public class HotelListFragment extends Fragment {
     }
 
     private void prepareUI() {
-        addButton = view.findViewById(R.id.button_add_hotel);
+        FloatingActionButton addButton = view.findViewById(R.id.button_add_hotel);
         emptyHotel = view.findViewById(R.id.empty_hotel);
+        progressBar = view.findViewById(R.id.progress_hotel_list);
         addButton.setOnClickListener(v -> {
             Navigation.findNavController(view).navigate(R.id.action_goToAddHotel);
         });
     }
 
     private void loadData() {
+        progressBar.setVisibility(View.VISIBLE);
         adapter = new HotelAdapter(PreferenceManager.getDefaultSharedPreferences(getActivity()), getString(R.string.place_api_secret), getActivity());
         hotelList = view.findViewById(R.id.recycler_hotel_list);
         hotelList.hasFixedSize();
         hotelList.setLayoutManager(new LinearLayoutManager(view.getContext()));
         hotelList.setAdapter(adapter);
+
         viewModel.getHotelsForTravel(travelID).observe(getViewLifecycleOwner(), hotels -> {
             if (hotels.isEmpty()) {
                 emptyHotel.setVisibility(View.VISIBLE);
@@ -70,14 +72,8 @@ public class HotelListFragment extends Fragment {
             }
             emptyHotel.setVisibility(View.GONE);
             hotelList.setVisibility(View.VISIBLE);
-            for(Hotel hotel : hotels){
-                viewModel.searchForHotel(getString(R.string.place_api_secret), hotel);
-            }
-
-            viewModel.getHotelsFromGoogle().observe(getViewLifecycleOwner(), googleHotels -> {
-                adapter.setHotels(googleHotels);
-            });
-
+            adapter.setHotels(hotels);
+            progressBar.setVisibility(View.GONE);
         });
         setSwipeEvent();
     }
@@ -89,10 +85,9 @@ public class HotelListFragment extends Fragment {
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 return false;
             }
-
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                viewModel.deleteHotel(adapter.getItemAt(viewHolder.getAbsoluteAdapterPosition()).getPlaceId());
+                viewModel.deleteHotel(adapter.getItemAt(viewHolder.getAbsoluteAdapterPosition()).getId());
                 Toasty.success(view.getContext(), view.getContext().getString(R.string.remove_item), Toast.LENGTH_SHORT, true).show();
             }
         }).attachToRecyclerView(hotelList);

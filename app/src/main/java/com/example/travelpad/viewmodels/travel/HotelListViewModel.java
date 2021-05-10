@@ -6,7 +6,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.travelpad.models.Hotel;
-import com.example.travelpad.models.HotelResponse;
 import com.example.travelpad.repositories.HotelRepository;
 
 import java.util.List;
@@ -23,15 +22,7 @@ public class HotelListViewModel extends AndroidViewModel {
         return hotelRepository.getHotelForTravel(travelId);
     }
 
-    public LiveData<List<HotelResponse>> getHotelsFromGoogle() {
-        return hotelRepository.getHotels();
-    }
-
-    public void searchForHotel(String apiKey, Hotel hotel){
-        hotelRepository.searchForHotel(apiKey, hotel);
-    }
-
-    public void deleteHotel(String placeId) {
+    public void deleteHotel(int placeId) {
         hotelRepository.deleteHotelFromTravel(placeId);
     }
 }

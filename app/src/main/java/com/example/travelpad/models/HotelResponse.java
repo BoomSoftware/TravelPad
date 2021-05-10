@@ -2,43 +2,6 @@ package com.example.travelpad.models;
 
 public class HotelResponse {
     private Result result;
-    private String placeId;
-    private double pricePerDay;
-
-    public String getReservationPath() {
-        return reservationPath;
-    }
-
-    public void setReservationPath(String reservationPath) {
-        this.reservationPath = reservationPath;
-    }
-
-    private String reservationPath;
-    private int days;
-
-    public String getPlaceId() {
-        return placeId;
-    }
-
-    public void setPlaceId(String placeId) {
-        this.placeId = placeId;
-    }
-
-    public double getPricePerDay() {
-        return pricePerDay;
-    }
-
-    public void setPricePerDay(double pricePerDay) {
-        this.pricePerDay = pricePerDay;
-    }
-
-    public int getDays() {
-        return days;
-    }
-
-    public void setDays(int days) {
-        this.days = days;
-    }
 
     public Result getResult() {
         return result;

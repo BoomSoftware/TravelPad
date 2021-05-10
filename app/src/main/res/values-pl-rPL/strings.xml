@@ -69,6 +69,8 @@
     <string name="unpacked_items">Przedmioty niezapakowane:</string>
     <string name="transport_without_ticket">Transporty bez biletu:</string>
     <string name="hotel_without_reservation">Hotele bez rezerwacji:</string>
+    <string name="add_ticket">Dodaj bilet</string>
+    <string name="view_ticket">Otwórz bilet</string>
 
 
     <string name="feedback">Opinia</string>

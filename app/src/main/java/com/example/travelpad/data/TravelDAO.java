@@ -6,8 +6,6 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Transaction;
-
-import com.example.travelpad.models.Item;
 import com.example.travelpad.models.Travel;
 import java.util.List;
 

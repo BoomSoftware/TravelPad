@@ -10,7 +10,7 @@ import com.example.travelpad.models.Item;
 import com.example.travelpad.models.Transportation;
 import com.example.travelpad.models.Travel;
 
-@Database(entities = {Travel.class, Transportation.class, Item.class, Hotel.class}, version = 10)
+@Database(entities = {Travel.class, Transportation.class, Item.class, Hotel.class}, version = 11)
 public abstract class TravelDatabase extends RoomDatabase {
     private static TravelDatabase instance;
     public abstract TravelDAO travelDAO();

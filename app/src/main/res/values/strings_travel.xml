@@ -33,6 +33,8 @@
     <string name="unpacked_items">Items not packed:</string>
     <string name="transport_without_ticket">Transportation without ticket:</string>
     <string name="hotel_without_reservation">Hotels without reservation:</string>
+    <string name="add_ticket">Add ticket</string>
+    <string name="view_ticket">View ticket</string>
 
 
     <!--    transports-->

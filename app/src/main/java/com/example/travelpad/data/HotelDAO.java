@@ -14,15 +14,15 @@ public interface HotelDAO {
     @Insert
     void addHotel(Hotel hotel);
 
-    @Query("DELETE FROM Hotel WHERE placeId=:placeId")
-    void removeHotel(String placeId);
+    @Query("DELETE FROM Hotel WHERE id=:placeId")
+    void removeHotel(int placeId);
 
     @Transaction
     @Query("SELECT * FROM Hotel WHERE travelId=:travelID")
     LiveData<List<Hotel>> getHotelForTravel(int travelID);
 
-    @Query("UPDATE HOTEL SET reservationPath=:reservationPath WHERE placeId=:placeId")
-    void updateReservationPath(String placeId, String reservationPath);
+    @Query("UPDATE HOTEL SET reservationPath=:reservationPath WHERE id=:placeId")
+    void updateReservationPath(int placeId, String reservationPath);
 
     @Query("SELECT COUNT(id) FROM Hotel WHERE reservationPath IS NULL AND travelId=:travelId")
     LiveData<Integer> getHotelsWithoutReservation(int travelId);

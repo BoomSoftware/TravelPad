@@ -31,7 +31,7 @@ public class TravelActivityViewModel extends AndroidViewModel {
         transportationRepository.updateTicketPath(transportationId, ticketPath);
     }
 
-    public void updateReservationPath(String placeId, String reservationPath){
+    public void updateReservationPath(int placeId, String reservationPath){
         hotelRepository.updateReservationPath(placeId, reservationPath);
     }
 

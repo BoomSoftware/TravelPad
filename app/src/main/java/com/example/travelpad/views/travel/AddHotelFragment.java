@@ -3,10 +3,8 @@ package com.example.travelpad.views.travel;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -29,9 +27,7 @@ import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 
 import org.jetbrains.annotations.NotNull;
-
 import java.util.Arrays;
-
 import es.dmoral.toasty.Toasty;
 
 public class AddHotelFragment extends Fragment {
@@ -82,7 +78,7 @@ public class AddHotelFragment extends Fragment {
             }
 
             int travelId = ((TravelActivity) getActivity()).getTravelID();
-            viewModel.addNewHotel(new Hotel(travelId, selectedPlace.getId(), Integer.parseInt(stayDurationEditText.getText().toString()), Double.parseDouble(pricePerDayEditText.getText().toString())));
+            viewModel.addNewHotel(getResources().getString(R.string.place_api_secret),new Hotel(travelId, Integer.parseInt(stayDurationEditText.getText().toString()), Double.parseDouble(pricePerDayEditText.getText().toString())), selectedPlace.getId());
             Toasty.success(view.getContext(), view.getContext().getString(R.string.added_hotel), Toast.LENGTH_SHORT, true).show();
         });
     }
