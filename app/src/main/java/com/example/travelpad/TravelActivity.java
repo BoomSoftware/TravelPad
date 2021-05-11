@@ -31,8 +31,6 @@ public class TravelActivity extends AppCompatActivity implements NavigationView.
 
     private int travelID;
     private TravelActivityViewModel viewModel;
-    private int transportationID;
-    private int placeId;
     private NavigationView navigationView;
     private NavController navController;
     private DrawerLayout drawerLayout;
@@ -58,34 +56,6 @@ public class TravelActivity extends AppCompatActivity implements NavigationView.
                 startActivity(new Intent(this, MainActivity.class));
             }
         });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case 1:
-                if (resultCode == RESULT_OK){
-                    Uri selectedFile = data.getData();
-                    viewModel.updateTicketPath(transportationID, selectedFile.toString());
-                    getContentResolver().takePersistableUriPermission(selectedFile, Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                }
-                break;
-            case 2:
-                if(resultCode == RESULT_OK){
-                    Uri selectedFile = data.getData();
-                    viewModel.updateReservationPath(placeId, selectedFile.toString());
-                    getContentResolver().takePersistableUriPermission(selectedFile, Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                }
-        }
-    }
-
-    public void setTransportationID(int id){
-        transportationID = id;
-    }
-
-    public void setPlaceId(int id) {
-        placeId = id;
     }
 
     private void prepareToolbar() {

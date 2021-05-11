@@ -1,7 +1,13 @@
 package com.example.travelpad.views.travel;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -16,19 +22,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.travelpad.BuildConfig;
 import com.example.travelpad.R;
 import com.example.travelpad.TravelActivity;
 import com.example.travelpad.adapters.TransportationAdapter;
 import com.example.travelpad.models.TransportationDirections;
 import com.example.travelpad.viewmodels.travel.TransportationViewModel;
-import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import es.dmoral.toasty.Toasty;
 
-public class TransportationFragment extends Fragment {
+public class TransportationFragment extends Fragment implements TransportationAdapter.OnTicketOptionsListener {
 
     private TransportationViewModel viewModel;
     private TransportationAdapter adapter;
@@ -36,9 +39,16 @@ public class TransportationFragment extends Fragment {
     private TextView emptyTransportation;
     private String direction;
     private int travelID;
+    private int selectedTransportationId;
     private View view;
+    private ActivityResultLauncher<Intent> ticketActivity;
 
     private FloatingActionButton addButton;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,6 +60,8 @@ public class TransportationFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(TransportationViewModel.class);
         prepareUI();
         loadData();
+
+        registerOnActivityResultListener();
         return view;
     }
 
@@ -63,9 +75,21 @@ public class TransportationFragment extends Fragment {
         });
     }
 
+    private void registerOnActivityResultListener(){
+        ticketActivity = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                        viewModel.updateTicketPath(selectedTransportationId, data.getData().toString());
+                        getActivity().getContentResolver().takePersistableUriPermission(data.getData(), Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    }
+                });
+    }
+
     private void loadData(){
         String[] transportTypes = getResources().getStringArray(R.array.transport);
-        adapter = new TransportationAdapter(getActivity(), transportTypes);
+        adapter = new TransportationAdapter(transportTypes, this);
         transportationList = view.findViewById(R.id.recycler_transportation_list);
         transportationList.hasFixedSize();
         transportationList.setLayoutManager(new LinearLayoutManager(view.getContext()));
@@ -116,4 +140,25 @@ public class TransportationFragment extends Fragment {
     }
 
 
+    @Override
+    public void addTicketEvent(int transportId) {
+        Intent chooseFile = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        chooseFile.setType("*/*");
+        chooseFile.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION
+                | Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+
+        selectedTransportationId = transportId;
+        ticketActivity.launch(chooseFile);
+    }
+    @Override
+    public void viewTicketEvent(String ticketPath) {
+        if(ticketPath != null && !ticketPath.equals("")){
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            Uri uri = Uri.parse(ticketPath);
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.setData(uri);
+            startActivity(intent);
+        }
+    }
 }

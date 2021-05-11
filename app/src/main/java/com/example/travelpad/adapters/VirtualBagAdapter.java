@@ -1,7 +1,6 @@
 package com.example.travelpad.adapters;
 
 import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,6 @@ import java.util.List;
 public class VirtualBagAdapter extends RecyclerView.Adapter<VirtualBagAdapter.ViewHolder> {
     private VirtualBagViewModel virtualBagViewModel;
     private List<Item> items;
-
 
     public VirtualBagAdapter() { items = new ArrayList<>(); }
 

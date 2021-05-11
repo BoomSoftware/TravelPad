@@ -25,4 +25,8 @@ public class HotelListViewModel extends AndroidViewModel {
     public void deleteHotel(int placeId) {
         hotelRepository.deleteHotelFromTravel(placeId);
     }
+
+    public void updateReservationPath(int placeId, String reservationPath){
+        hotelRepository.updateReservationPath(placeId, reservationPath);
+    }
 }

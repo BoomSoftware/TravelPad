@@ -1,22 +1,15 @@
 package com.example.travelpad.adapters;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.travelpad.R;
-import com.example.travelpad.TravelActivity;
 import com.example.travelpad.models.Transportation;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -26,12 +19,12 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
     private List<Transportation> transportationList;
     private String[] transportTypes;
     private SharedPreferences sharedPreferences;
-    private Activity activity;
+    private OnTicketOptionsListener onTicketOptionsListener;
 
-    public TransportationAdapter(Activity activity, String[] transportTypes) {
-        this.activity = activity;
+    public TransportationAdapter(String[] transportTypes, OnTicketOptionsListener listener) {
         this.transportTypes = transportTypes;
         transportationList = new ArrayList<>();
+        this.onTicketOptionsListener = listener;
     }
 
     @NonNull
@@ -168,25 +161,18 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
 
     private void addTicketEvent(Button addTicketButton, Transportation transportation){
         addTicketButton.setOnClickListener(v-> {
-            Intent chooseFile = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-            chooseFile.setType("*/*");
-            chooseFile.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION
-                    | Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-                    | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-            ((TravelActivity)activity).setTransportationID(transportation.getId());
-            activity.startActivityForResult(chooseFile, 1);
+           onTicketOptionsListener.addTicketEvent(transportation.getId());
         });
     }
 
     private void viewTicketEvent(Button viewTicketButton, Transportation transportation){
         viewTicketButton.setOnClickListener(v-> {
-            if(transportation.getTicketPath() != null && !transportation.getTicketPath().equals("")){
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                Uri uri = Uri.parse(transportation.getTicketPath());
-                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                intent.setData(uri);
-                activity.startActivity(intent);
-            }
+           onTicketOptionsListener.viewTicketEvent(transportation.getTicketPath());
         });
+    }
+
+    public interface OnTicketOptionsListener {
+        void addTicketEvent(int transportId);
+        void viewTicketEvent(String ticketPath);
     }
 }

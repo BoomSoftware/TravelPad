@@ -1,9 +1,6 @@
 package com.example.travelpad.adapters;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.travelpad.R;
-import com.example.travelpad.TravelActivity;
 import com.example.travelpad.models.Hotel;
 
 import java.util.ArrayList;
@@ -30,12 +26,12 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
     private List<Hotel> hotels;
     private SharedPreferences sharedPreferences;
     private String apiKey;
-    private Activity activity;
+    private OnReservationOptionsListener onReservationOptionsListener;
 
-    public HotelAdapter(SharedPreferences sharedPreferences, String apiKey, Activity activity){
-        this.activity = activity;
+    public HotelAdapter(SharedPreferences sharedPreferences, String apiKey, OnReservationOptionsListener listener){
         this.sharedPreferences = sharedPreferences;
         this.apiKey = apiKey;
+        onReservationOptionsListener = listener;
         hotels = new ArrayList<>();
     }
 
@@ -62,14 +58,13 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
 
 
         double totalPrice = currentHotel.getPricePerDay() * currentHotel.getDays();
-        holder.price.setText(String.valueOf(totalPrice));
+        holder.price.setText(String.format("%.2f", totalPrice));
 
         addReservationEvent(holder.addReservation, currentHotel);
         viewReservationEvent(holder.showReservation, currentHotel);
 
         holder.phone.setOnClickListener(v-> {
-            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + currentHotel.getPhoneNo()));
-            activity.startActivity(intent);
+            onReservationOptionsListener.openPhoneNoEvent(currentHotel.getPhoneNo());
         });
 
         holder.address.setOnClickListener(v -> {
@@ -124,25 +119,19 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
 
     private void addReservationEvent(Button addReservationButton, Hotel hotel){
         addReservationButton.setOnClickListener(v-> {
-            Intent chooseFile = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-            chooseFile.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION
-                    | Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-                    | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-            chooseFile.setType("*/*");
-            ((TravelActivity)activity).setPlaceId(hotel.getId());
-            activity.startActivityForResult(chooseFile, 2);
+            onReservationOptionsListener.addReservationEvent(hotel.getId());
         });
     }
 
     private void viewReservationEvent(Button viewReservationButton, Hotel hotel){
         viewReservationButton.setOnClickListener(v-> {
-            if(hotel.getReservationPath() != null && !hotel.getReservationPath().equals("")){
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                Uri uri = Uri.parse(hotel.getReservationPath());
-                intent.setData(uri);
-                activity.startActivity(intent);
-            }
+            onReservationOptionsListener.viewReservationEvent(hotel.getReservationPath());
         });
+    }
+
+    public interface OnReservationOptionsListener {
+        void addReservationEvent(int hotelId);
+        void viewReservationEvent(String reservationPath);
+        void openPhoneNoEvent(String phoneNo);
     }
 }
