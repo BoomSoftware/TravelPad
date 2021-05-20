@@ -1,5 +1,9 @@
 # TravelPad
 
+<h2>Presentation video: https://www.youtube.com/watch?v=VTPxPL9dUfs </br> 
+Summary: All the planning requirements have been successfully implemented.</h2>
+
+
 <p>The idea is to create an application that can help to manage trip. A lot of people organize their trips on their own, 
 so they have a lot of information and documents. This kind of situation can cause some problems. A price is also very important thing during the trip. 
 There are a lot of diffrent costs such as transportation, hotels and all the activities. 
@@ -12,7 +16,6 @@ The initial trip structure will be divided into small parts in the application:
 	- Transportation
 	- Virtual traveling bag
 	- Hotels and activities
-  
 
 <h3>Must have</h3>
   <li>As a user I want to have a possibility to create a new virtual travel with its name and date, so that I can add to it all important information</li>
