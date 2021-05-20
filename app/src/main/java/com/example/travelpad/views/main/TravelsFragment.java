@@ -47,7 +47,6 @@ public class TravelsFragment extends Fragment {
         emptyTravel = view.findViewById(R.id.text_empty_travel);
         travelList.hasFixedSize();
         travelList.setLayoutManager(new LinearLayoutManager(view.getContext()));
-
         adapter = new TravelAdapter();
         travelList.setAdapter(adapter);
 

@@ -64,7 +64,7 @@ public class HotelListFragment extends Fragment implements HotelAdapter.OnReserv
         });
     }
 
-    private void registerOnActivityResultListener(){
+    private void registerOnActivityResultListener() {
         reservationActivity = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -98,13 +98,14 @@ public class HotelListFragment extends Fragment implements HotelAdapter.OnReserv
         setSwipeEvent();
     }
 
-    private void setSwipeEvent(){
+    private void setSwipeEvent() {
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 return false;
             }
+
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 viewModel.deleteHotel(adapter.getItemAt(viewHolder.getAbsoluteAdapterPosition()).getId());
@@ -127,13 +128,13 @@ public class HotelListFragment extends Fragment implements HotelAdapter.OnReserv
 
     @Override
     public void viewReservationEvent(String reservationPath) {
-            if(reservationPath != null && !reservationPath.equals("")){
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                Uri uri = Uri.parse(reservationPath);
-                intent.setData(uri);
-                startActivity(intent);
-            }
+        if (reservationPath != null && !reservationPath.equals("")) {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            Uri uri = Uri.parse(reservationPath);
+            intent.setData(uri);
+            startActivity(intent);
+        }
     }
 
     @Override

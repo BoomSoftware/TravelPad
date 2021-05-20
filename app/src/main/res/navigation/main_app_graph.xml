@@ -11,16 +11,32 @@
         tools:layout="@layout/fragment_main_view">
         <action
             android:id="@+id/action_goToNewTravel"
-            app:destination="@id/newTravelFragment" />
+            app:destination="@id/newTravelFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_goToIdeas"
-            app:destination="@id/ideasFragment" />
+            app:destination="@id/ideasFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_goToTravels"
-            app:destination="@id/travelsFragment" />
+            app:destination="@id/travelsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_goToSettings"
-            app:destination="@id/settingsFragment" />
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/newTravelFragment"

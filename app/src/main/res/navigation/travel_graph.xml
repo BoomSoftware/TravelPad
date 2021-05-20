@@ -12,13 +12,25 @@
         tools:layout="@layout/fragment_travel_main_page" >
         <action
             android:id="@+id/action_goToVirtualBag"
-            app:destination="@id/virtualBagFragment" />
+            app:destination="@id/virtualBagFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_goToTransportation"
-            app:destination="@id/travelTransportationFragment" />
+            app:destination="@id/travelTransportationFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_goToHotel"
-            app:destination="@id/hotelListFragment" />
+            app:destination="@id/hotelListFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/virtualBagFragment"
@@ -32,7 +44,11 @@
         tools:layout="@layout/fragment_travel_transportation" >
         <action
             android:id="@+id/action_goToAddTransportation"
-            app:destination="@id/addTransportationFragment" />
+            app:destination="@id/addTransportationFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/addTransportationFragment"
@@ -46,10 +62,18 @@
         tools:layout="@layout/fragment_hotel_list" >
         <action
             android:id="@+id/action_goToAddHotel"
-            app:destination="@id/addHotelFragment" />
+            app:destination="@id/addHotelFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_hotelListFragment_to_hotelMapFragment"
-            app:destination="@id/hotelMapFragment" />
+            app:destination="@id/hotelMapFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/addHotelFragment"
